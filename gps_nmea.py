@@ -4,13 +4,12 @@ import array
 
 def get_gps_rmc_string():
     #serialport = serial.Serial("/dev/ttyAMA0", 9600, timeout=20)
-    serialport = serial.Serial("/dev/ttyAMA0", 9600, timeout=0.5)
+    serialport = serial.Serial("/dev/ttyAMA0", 9600, timeout=5)
 
     uart_array = array.array('c',)
     in_char = ''
 
     while True:
-        print "1:inf!"
         while in_char != '$':
             in_char = serialport.read()
 
@@ -21,7 +20,6 @@ def get_gps_rmc_string():
         #print "done " + str(string_to_cond)
         if string_to_cond == "GPRMC":
             while in_char != '\n':
-                print "2:Infinite!"
                 in_char = serialport.read(1)
                 uart_array.append(in_char)
             rmc_string = uart_array.tostring()
