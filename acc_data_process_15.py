@@ -3,7 +3,7 @@ class Acc_data:
     elem_lim = 100
     per_cnt_true = 100
 
-    val_lim = 0.3
+    val_lim = 0.2
     uplim_max = 3
 
 
@@ -27,7 +27,7 @@ class Acc_data:
             if abs(self.zlist[-1] - 1) > self.val_lim:
                 self.uplim_cnt += 1
                 if self.uplim_cnt > self.uplim_max:
-                    self.test2 = sum(self.zlist) / float(len(self.zlist))
+                    # self.test1 = sum(self.zlist) / float(len(self.zlist))
                     self.uplim_cnt = 0
                     return True
                 else:
@@ -50,12 +50,19 @@ class Acc_data:
 
 
 #DEBUG: Imitating False and True sequences
-        self.cnt += 1
-        if self.cnt == self.per_cnt_true:
-            self.cnt = 0
-            res = True
+        # self.cnt += 1
+        # if self.cnt == self.per_cnt_true:
+        #     self.cnt = 0
+        #     res = True
+        #     self.test1 = sum(self.zlist) / float(len(self.zlist))
+        #     self.test2 += 2
+        # else:
+        #     res = False
+
+        if bump_analyze(self.val_lim, self.uplim_max):
             self.test1 = sum(self.zlist) / float(len(self.zlist))
             self.test2 += 2
+            res = True
         else:
             res = False
 
