@@ -2,8 +2,10 @@
 
 from LIS3DH import LIS3DH
 from time import sleep
-import gps_nmea
+from gps_nmea import get_gps_rmc_string
+import pynmea2
 import acc_data_process
+import mqtt_send
 
 def trans_rmc_string_to_object(income_str):
     msg = pynmea2.parse(income_str)
@@ -42,8 +44,9 @@ if __name__ == '__main__':
         if(True):
             #if(acc_data_process(item)):
             rmc_obj = trans_rmc_string_to_object(get_gps_rmc_string())
-            #sent_to_cloud(rmv_obj.lat)
-            print str(rmc_obj)
+            print "Lalala !!!"
+            #send_data_to_cloud(rmv_obj.latitude, rmc_obj.longitude,data_1, data_2)
+            print str(rmc_obj.latitude) + " " + str(rmc_obj.longitude)
 
         print(item)
         #print("\rX: %.6f\tY: %.6f\tZ: %.6f" % (x, y, z))
