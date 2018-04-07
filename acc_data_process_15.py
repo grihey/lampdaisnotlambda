@@ -51,12 +51,12 @@ class Acc_data:
 
         #Bump analyzing function
         def bump_analyze2():
-
             if self.is_up == False:
                 if abs(self.zlist[-1] - 1) > self.val_lim:
                     self.uplim_cnt += 1
                     if self.uplim_cnt >= self.uplim_max:
                         self.is_up = True
+                        print("Start detection of the bump\n")
                         return False
                     else:
                         return False
